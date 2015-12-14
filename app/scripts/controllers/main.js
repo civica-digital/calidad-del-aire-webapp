@@ -33,6 +33,59 @@ angular.module('calidadDelAire')
         //   // self.showChart = false;
         // });
       };
+      $(function () {
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+            title: {
+                text: 'CO',
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 40
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        distance: -50,
+                        style: {
+                            fontWeight: 'bold',
+                            color: 'white',
+                            textShadow: '0px 1px 2px black'
+                        }
+                    },
+                    startAngle: 0,
+                    endAngle: 360,
+                    center: ['50%', '50%']
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Calidad',
+                innerSize: '50%',
+                data: [
+                    ['Mala',   10.38],
+                    ['Buena',       56.33],
+                    ['Regular', 24.03],
+                    ['Muy mala',    4.77],
+                    ['Parcialmente buena',     0.91],
+                    {
+                        name: 'Proprietary or Undetectable',
+                        y: 0.2,
+                        dataLabels: {
+                            enabled: false
+                        }
+                    }
+                ]
+            }]
+        });
+    });
 
       self.drawGraph = function() {
         self.showChart = true;
